@@ -6,7 +6,7 @@
 // @author       dieser-niko
 // @match        https://*/watch?v=*
 // @connect      returnyoutubedislikeapi.com
-// @icon         https://iteroni.com/favicon-32x32.png
+// @icon         https://invidious.io/favicon-32x32.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -27,11 +27,17 @@ let video_data = JSON.parse(document.getElementById('video_data').innerHTML);
             onload: function(data) {
                 let jsonData = {};
                 jsonData = JSON.parse(data.responseText);
-                $dislike_count.innerHTML = '<p id="dislikes"><i class="icon ion-ios-thumbs-down"></i> ' + jsonData.dislikes + '</p>'
+                const num = jsonData.dislikes
+                let dislikes = document.createElement("p");
+                let dislike_icon = document.createElement("i");
+                dislike_icon.classList.add("icon", "ion-ios-thumbs-down");
+                dislikes.appendChild(dislike_icon);
+                dislikes.append(" " + num.toLocaleString());
+                $like_count.after(dislikes);
             },
             anonymous: true
         });
     }
-    let $dislike_count = document.getElementById("dislikes");
+    let $like_count = document.getElementById("likes");
     doRequest(video_data.id);
 })();
