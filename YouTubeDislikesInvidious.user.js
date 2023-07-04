@@ -1,15 +1,13 @@
 // ==UserScript==
 // @name         Return YouTube Dislike for Invidious
 // @namespace    dieser-niko/youtube-dislikes-invidious
-// @version      0.1
-// @description  Show dislikes for a video on iteroni.com invidious instance
+// @version      0.2
+// @description  Show dislikes for a video on invidious instances
 // @author       dieser-niko
 // @match        https://*/watch?v=*
 // @connect      returnyoutubedislikeapi.com
 // @icon         https://invidious.io/favicon-32x32.png
 // @grant        GM_xmlhttpRequest
-// @grant        GM_setValue
-// @grant        GM_getValue
 // ==/UserScript==
 
 let dislike_api = "https://returnyoutubedislikeapi.com/votes?videoId=";
